@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Lebuuuuu 🌙</title>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at bottom,
+            #18245c 0%,
+            #080b25 50%,
+            #02030d 100%
+        );
+}
+
+
+/* ================= SKY ================= */
+
+.sky {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* ================= MOON ================= */
+
+.moon {
+
+    position: absolute;
+
+    width: 145px;
+
+    height: 145px;
+
+    top: 7%;
+
+    right: 10%;
+
+    border-radius: 50%;
+
+    background: #f4df9b;
+
+    box-shadow:
+        0 0 20px rgba(244,223,155,0.7),
+        0 0 50px rgba(244,223,155,0.35),
+        0 0 90px rgba(244,223,155,0.15);
+
+}
+
+
+/* ================= FALLING STARS ================= */
+
+.star {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 8px white;
+
+    animation: fall linear infinite;
+}
+
+
+@keyframes fall {
+
+    0% {
+
+        transform:
+            translateY(-20px)
+            translateX(0);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            translateX(120px);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ================= MAIN CONTENT ================= */
+
+.container {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 5;
+
+}
+
+
+/* ================= TITLE ================= */
+
+.title {
+
+    text-align: center;
+
+    animation: fadeIn 2s ease;
+
+}
+
+
+.title h1 {
+
+    font-size: 50px;
+
+    color: #fff4c4;
+
+    text-shadow:
+        0 0 10px #fff4c4,
+        0 0 25px #ffe88a,
+        0 0 50px #ffe88a;
+
+}
+
+
+.title p {
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+
+    color: #dfe2ff;
+
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message {
+
+    margin-top: 18px;
+
+    max-width: 600px;
+
+    padding: 0 25px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #eeeeff;
+
+}
+
+
+/* ================= PHOTO ================= */
+
+.photo-box {
+
+    width: 210px;
+
+    height: 210px;
+
+    margin-top: 22px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: 3px solid rgba(255,255,255,0.75);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.3),
+        0 0 50px rgba(130,150,255,0.3);
+
+}
+
+
+.photo-box img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: opacity 0.5s ease;
+
+}
+
+
+/* ================= MUSIC BUTTON ================= */
+
+.music-btn {
+
+    margin-top: 20px;
+
+    padding: 12px 25px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+
+}
+
+
+.music-btn:hover {
+
+    background:
+        rgba(255,255,255,0.25);
+
+    transform: scale(1.05);
+
+}
+
+
+/* ================= PLAYING TEXT ================= */
+
+.music-status {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #dfe2ff;
+
+    min-height: 20px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ================= YOUTUBE ================= */
+
+.youtube-player {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.youtube-player iframe {
+
+    width: 1px;
+
+    height: 1px;
+
+    border: none;
+
+}
+
+
+/* ================= BOTTOM TEXT ================= */
+
+.bottom-text {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #aeb2d6;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ================= FADE ================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px) {
+
+    .moon {
+
+        width: 230px;
+
+        height: 230px;
+
+        top: 6%;
+
+        right: 8%;
+
+    }
+
+
+    .title h1 {
+
+        font-size: 36px;
+
+    }
+
+
+    .title p {
+
+        font-size: 14px;
+
+    }
+
+
+    .message {
+
+        font-size: 16px;
+
+    }
+
+
+    .photo-box {
+
+        width: 250px;
+
+        height: 2500px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= SKY ================= -->
+
+<div
+    class="sky"
+    id="sky">
+</div>
+
+
+<!-- ================= MOON ================= -->
+
+<div class="moon"></div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- ================= TITLE ================= -->
+
+    <div class="title">
+
+        <h1>
+            Happy Birthday LEBUUU 🌙
+        </h1>
+
+        <p>
+            My favorite person under the same moon ✨
+        </p>
+
+    </div>
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <div class="message">
+
+       Thank you for always being by my side, my healer. 🤍 I honestly don’t know what I’d do without you. Thank you for healing me in ways you may never realize and for being such a beautiful part of my life. You mean more to me than words can ever express. 🥺❤️
+
+    </div>
+
+
+    <!-- ================= PHOTO ================= -->
+
+    <div class="photo-box">
+
+        <img
+            id="photo"
+            src="photoo/pic1.jpg"
+            alt="Best Friend">
+
+    </div>
+
+
+    <!-- ================= MUSIC BUTTON ================= -->
+
+    <button
+        class="music-btn"
+        id="musicButton"
+        onclick="playSong()">
+
+        🎵 Play Our Song
+
+    </button>
+
+
+    <!-- ================= MUSIC STATUS ================= -->
+
+    <div
+        class="music-status"
+        id="musicStatus">
+
+    </div>
+
+
+    <!-- ================= BOTTOM TEXT ================= -->
+
+    <div class="bottom-text">
+
+        Some people become friends.
+        You became family. 🤍
+
+    </div>
+
+</div>
+
+
+<!-- ================= YOUTUBE PLAYER ================= -->
+
+<div class="youtube-player">
+
+    <iframe
+        id="youtube"
+
+        src="https://www.youtube.com/embed/55_31qXTjpE?enablejsapi=1"
+
+        frameborder="0"
+
+        allow="autoplay; encrypted-media">
+
+    </iframe>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   CREATE FALLING STARS
+========================================= */
+
+const sky =
+    document.getElementById("sky");
+
+
+for (let i = 0; i < 100; i++) {
+
+    const star =
+        document.createElement("div");
+
+
+    star.classList.add("star");
+
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+
+    star.style.top =
+        Math.random() * -100 + "vh";
+
+
+    const size =
+        Math.random() * 3 + 1;
+
+
+    star.style.width =
+        size + "px";
+
+
+    star.style.height =
+        size + "px";
+
+
+    star.style.animationDuration =
+        (Math.random() * 5 + 3) + "s";
+
+
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
+
+
+    sky.appendChild(star);
+
+}
+
+
+/* =========================================
+   PHOTO SLIDESHOW
+========================================= */
+
+const photos = [
+
+    "photoo/pic1.jpg",
+
+    "photoo/pic2.jpg",
+
+    "photoo/pic3.jpg",
+
+    "photoo/pic5.jpg",
+
+    "photoo/pic6.jpg",
+
+    "photoo/pic7.jpg",
+
+    "photoo/pic8.jpg"
+
+
+
+];
+
+
+let currentPhoto = 0;
+
+
+const photo =
+    document.getElementById("photo");
+
+
+setInterval(function() {
+
+    photo.style.opacity = "0";
+
+
+    setTimeout(function() {
+
+        currentPhoto++;
+
+
+        if (
+            currentPhoto >= photos.length
+        ) {
+
+            currentPhoto = 0;
+
+        }
+
+
+        photo.src =
+            photos[currentPhoto];
+
+
+        photo.style.opacity = "1";
+
+
+    }, 500);
+
+
+}, 3000);
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+let isPlaying = false;
+
+
+function playSong() {
+
+    const youtube =
+        document.getElementById("youtube");
+
+
+    const button =
+        document.getElementById("musicButton");
+
+
+    const status =
+        document.getElementById("musicStatus");
+
+
+    if (!isPlaying) {
+
+        /* PLAY */
+
+        youtube.contentWindow.postMessage(
+
+            JSON.stringify({
+
+                event: "command",
+
+                func: "playVideo",
+
+                args: []
+
+            }),
+
+            "*"
+
+        );
+
+
+        isPlaying = true;
+
+
+        button.innerHTML =
+            "⏸ Pause Our Song";
+
+
+        status.innerHTML =
+            "🎵 Playing...";
+
+
+    }
+
+    else {
+
+        /* PAUSE */
+
+        youtube.contentWindow.postMessage(
+
+            JSON.stringify({
+
+                event: "command",
+
+                func: "pauseVideo",
+
+                args: []
+
+            }),
+
+            "*"
+
+        );
+
+
+        isPlaying = false;
+
+
+        button.innerHTML =
+            "🎵 Play Our Song";
+
+
+        status.innerHTML =
+            "⏸ Paused";
+
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
